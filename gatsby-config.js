@@ -3,8 +3,8 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `smart-maintenance`,
+    title: `SMART is Temporarily Down for Maintenance`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [],
-}
+  plugins: [`gatsby-plugin-styled-components`],
+};

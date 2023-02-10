@@ -1,0 +1,13 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#fff",
+    "titleBar.inactiveForeground": "#3f3f4a",
+    "titleBar.activeBackground": "#0c2d4d",
+    "titleBar.inactiveBackground": "#84a188"
+  },
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "prettier.enable": true,
+  "css.format.spaceAroundSelectorSeparator": true
+}
