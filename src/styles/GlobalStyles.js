@@ -3,36 +3,6 @@ import { createGlobalStyle } from "styled-components";
 import WrenchTile from "../images/wrench-tile.svg";
 
 const GlobalStyles = createGlobalStyle`
-:root {
-  --white: #fff;
-  --light-grey0: #f1f4f5;
-  --light-grey1: #898989;
-  --dark-grey0: #3f3f4a;
-  --text-header: --dark-grey0;
-  --text-secondary: --light-grey1;
-  --smi-burgundy: #922e48;
-  --smi-burgundy-translucent: rgba(146, 46, 72, 0.84);
-  --smi-burgundy-light0: #e76c8d;
-  --dark-blue0: #0c2d4d;
-  --light-blue0: #3b91df;
-  --sage: #84a188;
-  --header-font-family: Georgia, serif;
-  --default-sans-family: sans-serif;
-  --b-space1: 1rem;
-  --b-space2: 2rem;
-  --b-space3: 3rem;
-  --b-space4: 4rem;
-  --b-space5: 5rem;
-  --b-space6: 6rem;
-  --b-borderRad1: 15px;
-  --b-borderRad2: 30px;
-  --font-size-h1: 4.8rem;
-  --font-size-h2: 3.6rem;
-  --font-size-base: 1.8rem;
-  --font-size-l: 2.8rem;
-  --font-size-s: 1.5rem;
-  --max-width: 1200px;
-}
 
 html {
   box-sizing: border-box;
@@ -54,11 +24,11 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--white);
-  color: var(--dark-grey0);
-  font-family: var(--default-sans-family);
+  background-color: ${({ theme }) => theme.brand.white};
+  color: ${({ theme }) => theme.bodyTextColor};
+  font-family: ${({ theme }) => theme.fontFamily.sans};
   font-weight: 400;
-  font-size: var(--font-size-base);
+  font-size: ${({ theme }) => theme.fontSize.base};
 }
 
 /*
@@ -67,13 +37,13 @@ body {
 
 .page-wrapper {
   position: relative;
-  padding: var(--b-space4);
+  padding: ${({ theme }) => theme.spacing.space4};
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  border-top: 3px solid var(--smi-burgundy);
-  background-color: var(--light-grey0);
+  border-top: 3px solid ${({ theme }) => theme.brand.primary};
+  background-color: ${({ theme }) => theme.bgPage};
 }
 
 .page-header {
@@ -83,14 +53,14 @@ body {
   left: 0;
   background: transparent;
   z-index: 3;
-  height: var(--b-space5);
+  height: ${({ theme }) => theme.spacing.space5};
   width: 100%;
-  padding: var(--b-space1);
+  padding: ${({ theme }) => theme.spacing.space1};
 }
 
 .page-header .branding {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
 }
 
@@ -110,15 +80,15 @@ body {
   left: 0;
   background: transparent;
   z-index: 3;
-  height: var(--b-space5);
+  height: ${({ theme }) => theme.spacing.space5};
   width: 100%;
-  padding: var(--b-space1);
+  padding: ${({ theme }) => theme.spacing.space1};
 }
 
 .page-footer .inner-footer {
-  max-width: var(--max-width);
+  max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
-  color: var(--light-grey1);
+  color: ${({ theme }) => theme.bodyTextColorSubtle};
 }
 
 .content-main {
@@ -126,11 +96,11 @@ body {
   z-index: 2;
   width: 100%;
   max-width: 720px;
-  border-top-left-radius: var(--b-borderRad2);
-  border-bottom-right-radius: var(--b-borderRad2);
-  background-color: var(--smi-burgundy);
+  border-top-left-radius: ${({ theme }) => theme.borderRad2};
+  border-bottom-right-radius: ${({ theme }) => theme.borderRad2};
+  background-color: ${({ theme }) => theme.brand.primary};
   padding-top: 9rem;
-  box-shadow: 0 1px 8px 1px rgba(136, 136, 136, 0.48);
+  box-shadow: ${({ theme }) => theme.boxShadow};
 }
 
 .content-main .overlay {
@@ -143,8 +113,8 @@ body {
   background: url(${WrenchTile}) transparent repeat center left;
   background-size: 120px;
   opacity: 0.24;
-  border-top-left-radius: var(--b-borderRad2);
-  border-bottom-right-radius: var(--b-borderRad2);
+  border-top-left-radius: ${({ theme }) => theme.borderRad2};
+  border-bottom-right-radius: ${({ theme }) => theme.borderRad2};
 }
 
 .content-main h1 {
@@ -154,9 +124,9 @@ body {
 .message-block {
   position: relative;
   z-index: 2;
-  background-color: var(--white);
-  padding: var(--b-space5);
-  border-bottom-right-radius: var(--b-borderRad2);
+  background-color: ${({ theme }) => theme.brand.white};
+  padding: ${({ theme }) => theme.spacing.space5};
+  border-bottom-right-radius: ${({ theme }) => theme.borderRad2};
 }
 
 /*
@@ -171,19 +141,25 @@ h5,
 h6 {
   margin: 0 0 0.5em;
   line-height: 1.25;
-  font-family: var(--header-font-family);
+  font-family: ${({ theme }) => theme.fontFamily.serif};
 }
 
 h1 {
-  font-size: var(--font-size-h1);
+  font-size: ${({ theme }) => theme.fontSize.h1};
   text-align: center;
 }
 
 .kicker {
   display: block;
   margin: 0 auto;
-  font-size: var(--font-size-l);
-  color: var(--smi-burgundy);
+  font-size: ${({ theme }) => theme.fontSize.l};
+  color: ${({ theme }) => theme.brand.primary};
+}
+
+.appName {
+  font-family: ${({ theme }) => theme.fontFamily.sans};
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fontSize.base};
 }
 
 p {
@@ -197,7 +173,7 @@ p:last-child, p:only-child {
 
 @media (max-width: 480px) {
   .page-wrapper {
-    padding: var(--b-space2);
+    padding: ${({ theme }) => theme.spacing.space2};
   }
 
   .page-header {
@@ -219,18 +195,16 @@ p:last-child, p:only-child {
   }
 
   .message-block {
-    padding: var(--b-space4) var(--b-space2);
+    padding: ${({ theme }) => theme.spacing.space4} ${({ theme }) =>
+  theme.spacing.space2};
   }
 
   h1 {
-    font-size: var(--font-size-h2);
+    font-size: ${({ theme }) => theme.fontSize.h2};
   }
 
   .kicker {
-    display: block;
-    margin: 0 auto;
-    font-size: var(--font-size-base);
-    color: var(--smi-burgundy);
+    font-size: ${({ theme }) => theme.fontSize.base};
   }
 }
 
@@ -243,19 +217,19 @@ p:last-child, p:only-child {
   border: 0;
   height: 0;
   width: 100%;
-  border-bottom: 1px solid var(--smi-burgundy-light0);
+  border-bottom: 1px solid ${({ theme }) => theme.brand.primaryHighlight};
 }
 
 .mt-2 {
-  margin-top: var(--b-space2);
+  margin-top: ${({ theme }) => theme.spacing.space2};
 }
 
 .mb-2 {
-  margin-bottom: var(--b-space2);
+  margin-bottom: ${({ theme }) => theme.spacing.space2};
 }
 
 .mb-4 {
-  margin-bottom: var(--b-space4);
+  margin-bottom: ${({ theme }) => theme.spacing.space4};
 }
 
 .t-alignC {
@@ -263,7 +237,7 @@ p:last-child, p:only-child {
 }
 
 .ts-s {
-  font-size: var(--font-size-s);
+  font-size: ${({ theme }) => theme.fontSize.s};
 }
 `;
 

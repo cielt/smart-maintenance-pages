@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Link } from "gatsby";
+import { ThemeProvider } from "styled-components";
 
 import GlobalStyles from "../styles/GlobalStyles";
+import { smartThemeDefault } from "../styles/smartThemeDefault";
 import smiLogo from "../images/logo-smi-burgundy.svg";
 
 const Layout = ({ pageTitle, children }) => {
   return (
-    <>
+    <ThemeProvider theme={smartThemeDefault}>
       <GlobalStyles />
       <div className="page-wrapper">
         <header class="page-header" id="page-header">
@@ -35,16 +37,13 @@ const Layout = ({ pageTitle, children }) => {
         <footer className="page-footer" id="page-footer">
           <div className="inner-footer">
             <p className="ts-s t-alignC">
-              &copy;{" "}
-              <span className="copy-year" id="footer-copy-year">
-                2023
-              </span>{" "}
+              &copy; <span className="copy-year" id="footer-copy-year"></span>{" "}
               Systems &amp; Methods, Inc. All Rights Reserved
             </p>
           </div>
         </footer>
       </div>
-    </>
+    </ThemeProvider>
   );
 };
 
