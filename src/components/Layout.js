@@ -4,19 +4,26 @@ import { ThemeProvider } from "styled-components";
 
 import GlobalStyles from "../styles/GlobalStyles";
 import { smartThemeDefault } from "../styles/smartThemeDefault";
+import { smartThemeWv } from "../styles/smartThemeWv";
 import smiLogo from "../images/logo-smi-burgundy.svg";
+import wvLogo from "../images/logo/logo-wv.png";
+import tnLogo from "../images/logo/logo-tn.png";
+import { getCurrentYear } from "../utils/time";
 
-const Layout = ({ pageTitle, children }) => {
+const defaultTitle = "Down for Maintenance";
+
+const Layout = ({ pageTitle, children, variant, appName, logo }) => {
+  const themeVariant = variant === "wv" ? smartThemeWv : smartThemeDefault;
+  const themeLogo = variant === "wv" ? wvLogo : tnLogo;
+
   return (
-    <ThemeProvider theme={smartThemeDefault}>
+    <ThemeProvider theme={themeVariant}>
       <GlobalStyles />
       <div className="page-wrapper">
-        <header class="page-header" id="page-header">
+        <header className="page-header" id="page-header">
           <div className="branding" id="branding-block">
             <div className="logo-block logo-block-smart">
-              <span className="logo-block">
-                <img src={smiLogo} alt="" />
-              </span>
+              <img src={logo || themeLogo} alt="" />
             </div>
           </div>
         </header>
@@ -25,19 +32,19 @@ const Layout = ({ pageTitle, children }) => {
           <div className="message-block">
             <h1>
               <em className="kicker">Sorry, we&rsquo;re</em>
-              {pageTitle}
+              {pageTitle || defaultTitle}
             </h1>
             <hr className="hairline mb-2 mt-2" />
-            <p>{children}</p>
-            <p className="t-alignC">
-              <strong>Stay tuned &mdash; we&rsquo;ll be back shortly!</strong>
-            </p>
+            {children}
           </div>
         </main>
         <footer className="page-footer" id="page-footer">
           <div className="inner-footer">
             <p className="ts-s t-alignC">
-              &copy; <span className="copy-year" id="footer-copy-year"></span>{" "}
+              &copy;{" "}
+              <span className="copy-year" id="footer-copy-year">
+                {getCurrentYear()}
+              </span>{" "}
               Systems &amp; Methods, Inc. All Rights Reserved
             </p>
           </div>

@@ -3,6 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
+import DefaultMaintenanceMessage from "../components/DefaultMaintenanceMessage";
+import smiLogo from "../images/logo-smi-burgundy.svg";
 
 const IndexPage = () => {
   const { site } = useStaticQuery(
@@ -12,7 +14,7 @@ const IndexPage = () => {
           siteMetadata {
             title
             description
-            applicationName
+            appName
           }
         }
       }
@@ -20,20 +22,23 @@ const IndexPage = () => {
   );
 
   return (
-    <Layout pageTitle="Down for Maintenance">
-      <Seo title="SMART Child Support | Down for Maintenance"></Seo>
-      <p>
-        <span className="appName">{site.siteMetadata.applicationName}</span> is
-        currently unavailable while we perform site maintenance. We&rsquo;re
-        working hard to bring you an even better experience at{" "}
-        <span className="appName">{site.siteMetadata.applicationName}</span>!
+    <Layout
+      pageTitle={site.siteMetadata.title}
+      variant="default"
+      appName="SMART Child Support"
+      logo={smiLogo}
+    >
+      <Seo
+        title={`${site.siteMetadata.appName} | ${site.siteMetadata.title}`}
+      ></Seo>
+      <div className="mb-4">
+        <DefaultMaintenanceMessage appName={site.siteMetadata.appName} />
+      </div>
+      <p className="t-alignC tf-serif">
+        <strong>Stay tuned &mdash; we&rsquo;ll be back shortly!</strong>
       </p>
     </Layout>
   );
 };
 
 export default IndexPage;
-
-export const Head = () => (
-  <title>Sorry, We&rsquo;re Down for Maintenance | Be Back Soon | SMART</title>
-);

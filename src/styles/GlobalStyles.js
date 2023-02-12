@@ -65,13 +65,14 @@ body {
 }
 
 .page-header .branding .logo-block {
-  height: 30px;
-  width: 60px;
+  height: 80px;
+  width: 120px;
 }
 
 .page-header .branding .logo-block img {
-  width: auto;
+  width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .page-footer {
@@ -181,8 +182,8 @@ p:last-child, p:only-child {
   }
 
   .page-header .branding .logo-block {
-    height: 24px;
-    width: 48px;
+    height: 60px;
+    width: 90px;
     margin: 0 auto;
   }
 
@@ -234,6 +235,10 @@ p:last-child, p:only-child {
 
 .t-alignC {
   text-align: center;
+}
+
+.tf-serif {
+  font-family: ${({ theme }) => theme.fontFamily.serif};
 }
 
 .ts-s {
