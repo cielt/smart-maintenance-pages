@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 import DefaultMaintenanceMessage from "../components/DefaultMaintenanceMessage";
-import smiLogo from "../images/logo-smi-burgundy.svg";
 
 const IndexPage = () => {
   const { site } = useStaticQuery(
@@ -26,7 +25,6 @@ const IndexPage = () => {
       pageTitle={site.siteMetadata.title}
       variant="default"
       appName="SMART Child Support"
-      logoPath={smiLogo}
     >
       <Seo
         title={`${site.siteMetadata.appName} | ${site.siteMetadata.title}`}
@@ -47,4 +45,4 @@ export const Head = ({ location, params, data, pageContext }) => (
   <Seo>
     <title>SMART Child Support | Down for Maintenance</title>
   </Seo>
-)
+);

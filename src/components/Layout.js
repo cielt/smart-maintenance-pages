@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ThemeProvider } from "styled-components";
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import GlobalStyles from "../styles/GlobalStyles";
 import smiLogo from "../images/logo-smi-burgundy.svg";
@@ -9,9 +8,8 @@ import { getCurrentTheme } from "../utils/themeUtils";
 
 const defaultTitle = "Down for Maintenance";
 
-const Layout = ({ pageTitle, children, variant, appName, logo }) => {
+const Layout = ({ pageTitle, children, variant, appName, logoUrl }) => {
   const themeVariant = getCurrentTheme(variant);
-  const logoImage = getImage(logo);
 
   return (
     <ThemeProvider theme={themeVariant}>
@@ -20,7 +18,11 @@ const Layout = ({ pageTitle, children, variant, appName, logo }) => {
         <header className="page-header" id="page-header">
           <div className="branding" id="branding-block">
             <div className="logo-block logo-block-smart">
-              {logo ? (<GatsbyImage image={logoImage} objectFit="contain" alt={`${appName} logo`} />) : (<img src={smiLogo} alt="SMI logo" />)}
+              {logoUrl ? (
+                <img src={logoUrl} alt={appName} />
+              ) : (
+                <img src={smiLogo} alt="SMI logo" />
+              )}
             </div>
           </div>
         </header>
