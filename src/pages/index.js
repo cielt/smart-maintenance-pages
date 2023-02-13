@@ -42,3 +42,9 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const Head = ({ location, params, data, pageContext }) => (
+  <Seo>
+    <title>SMART Child Support | Down for Maintenance</title>
+  </Seo>
+)

@@ -62,3 +62,10 @@ const StateMaintenancePage = ({ data: { mdx: state }, children }) => {
 };
 
 export default StateMaintenancePage;
+
+export const Head = ({ location, params, data, pageContext }) => (
+  <Seo>
+    <title>{`${data.mdx.frontmatter.appName} | ${data.mdx.frontmatter.title}`}</title>
+  </Seo>
+)
+
