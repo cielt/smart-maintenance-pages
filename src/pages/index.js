@@ -26,7 +26,7 @@ const IndexPage = () => {
       pageTitle={site.siteMetadata.title}
       variant="default"
       appName="SMART Child Support"
-      logo={smiLogo}
+      logoPath={smiLogo}
     >
       <Seo
         title={`${site.siteMetadata.appName} | ${site.siteMetadata.title}`}

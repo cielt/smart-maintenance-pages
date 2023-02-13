@@ -20,6 +20,15 @@ export const stateQuery = graphql`
         title
         stateName
         appName
+        logo {
+          childImageSharp {
+            gatsbyImageData(
+              height: 80
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
+        }
         theme
       }
       body
@@ -33,11 +42,11 @@ const StateMaintenancePage = ({ data: { mdx: state }, children }) => {
   }
 
   const {
-    frontmatter: { title, date, stateName, appName, theme },
+    frontmatter: { title, date, stateName, appName, logo, theme },
   } = state;
 
   return (
-    <Layout pageTitle={title} variant={theme}>
+    <Layout pageTitle={title} variant={theme} logo={logo}>
       <Seo title={`${appName} | Down for Maintenance`}></Seo>
       <MDXProvider components={shortcodes}>
         {children}

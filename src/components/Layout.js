@@ -1,20 +1,17 @@
 import * as React from "react";
-import { Link } from "gatsby";
 import { ThemeProvider } from "styled-components";
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import GlobalStyles from "../styles/GlobalStyles";
-import { smartThemeDefault } from "../styles/smartThemeDefault";
-import { smartThemeWv } from "../styles/smartThemeWv";
 import smiLogo from "../images/logo-smi-burgundy.svg";
-import wvLogo from "../images/logo/logo-wv.png";
-import tnLogo from "../images/logo/logo-tn.png";
 import { getCurrentYear } from "../utils/time";
+import { getCurrentTheme } from "../utils/themeUtils";
 
 const defaultTitle = "Down for Maintenance";
 
 const Layout = ({ pageTitle, children, variant, appName, logo }) => {
-  const themeVariant = variant === "wv" ? smartThemeWv : smartThemeDefault;
-  const themeLogo = variant === "wv" ? wvLogo : tnLogo;
+  const themeVariant = getCurrentTheme(variant);
+  const logoImage = getImage(logo);
 
   return (
     <ThemeProvider theme={themeVariant}>
@@ -23,7 +20,7 @@ const Layout = ({ pageTitle, children, variant, appName, logo }) => {
         <header className="page-header" id="page-header">
           <div className="branding" id="branding-block">
             <div className="logo-block logo-block-smart">
-              <img src={logo || themeLogo} alt="" />
+              {logo ? (<GatsbyImage image={logoImage} objectFit="contain" alt={`${appName} logo`} />) : (<img src={smiLogo} alt="SMI logo" />)}
             </div>
           </div>
         </header>
